@@ -86,148 +86,109 @@ namespace Komponenty_app
 
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createConnectionOfTwoParts(string name)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_T_1000";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+            Connection connection = new Connection();
+            connection.Name = name;
+            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+            Picker picker = new Picker();
 
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
+            connection.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            connection.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+
             try
             {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
+                connection.Insert();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Nie udało się wstawić komponentu", "Error");
             }
             MyModel.CommitChanges();
+        }
+
+        private void createDetailWithoutReferencePoint(string name)
+		{
+            Detail detail = new Detail();
+            detail.Name = name;
+            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+
+            try
+            {
+                detail.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
+        private void createDetailWithReferencePoint(string name)
+		{
+            Detail detail = new Detail();
+            detail.Name = name;
+            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            detail.SetReferencePoint(picker.PickPoint());
+
+            try
+            {
+                detail.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
+        private void createSeam(string name)
+		{
+            Seam seam = new Seam();
+            seam.Name = name;
+            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+
+            seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            seam.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            seam.SetInputPositions(picker.PickPoint(), picker.PickPoint());
+
+            try
+            {
+                seam.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            createConnectionOfTwoParts("S_P_T_1000");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_BS_1001";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_BS_1001");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_BS_1002";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_BS_1002");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_X_1003";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_X_1003");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -410,74 +371,12 @@ namespace Komponenty_app
 
         private void button11_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_RR_1010";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_RR_1010");
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_SR_1011";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_SR_1011");
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -562,346 +461,67 @@ namespace Komponenty_app
 
         private void button15_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_BP_1014";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_BP_1014");
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-            Connection cp1 = new Connection();
-            cp1.Name = "S_P_ST_1015";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            ModelObject part2 = new Beam();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                part2 = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            cp1.SetPrimaryObject(part);
-            cp1.SetSecondaryObject(part2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("S_P_ST_1015");
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
-            Detail cp1 = new Detail();
-            cp1.Name = "S_E_SP_1016";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            ModelObject part = new Beam();
-            Point p2 = new Point();
-            try
-            {
-                part = piku.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            }
-            catch (Exception ex)
-            {
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            cp1.SetPrimaryObject(part);
-            cp1.SetReferencePoint(p2);
-            try
-            {
-                cp1.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("S_E_SP_1016");
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-            Seam seam = new Seam();
-            seam.Name = "Z_K_SZ_2000";
-            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = new Beam();
-            ModelObject secondaryPart = new Beam();
-            Point startPoint = new Point();
-            Point endPoint = new Point();
-
-            mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            startPoint = picker.PickPoint();
-            endPoint = picker.PickPoint();
-
-            seam.SetPrimaryObject(mainPart);
-            seam.SetSecondaryObject(secondaryPart);
-            seam.SetInputPositions(startPoint, endPoint);
-
-            try
-            {
-                seam.Insert();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createSeam("Z_K_SZ_2000");
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_PDl_2001";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_PDl_2001");
         }
 
         private void button20_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_PDp_2002 ";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_PDp_2002 ");
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
-            Seam seam = new Seam();
-            seam.Name = "Z_P_SZ_2003";
-            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = new Beam();
-            ModelObject secondaryPart = new Beam();
-            Point startPoint = new Point();
-            Point endPoint = new Point();
-
-            mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            startPoint = picker.PickPoint();
-            endPoint = picker.PickPoint();
-
-            seam.SetPrimaryObject(mainPart);
-            seam.SetSecondaryObject(secondaryPart);
-            seam.SetInputPositions(startPoint, endPoint);
-
-            try
-            {
-                seam.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createSeam("Z_P_SZ_2003");
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_MSO_2004";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_D_MSO_2004");
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2007";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_E_SL_2007");
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2008";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_E_SL_2008");
         }
 
         private void button25_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2009";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_E_SL_2009");
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2010";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_E_SL_2010");
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2011";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_E_SL_2011");
         }
 
         private void button28_Click(object sender, EventArgs e)
@@ -926,23 +546,7 @@ namespace Komponenty_app
 
         private void button29_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_E_SL_2013";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithReferencePoint("Z_E_SL_2013");
         }
 
         private void button30_Click(object sender, EventArgs e)
@@ -1113,194 +717,42 @@ namespace Komponenty_app
 
         private void button38_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_PDl_2024";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_PDl_2024");
         }
 
         private void button39_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_PDp_2025";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_PDp_2025");
         }
 
         private void button40_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_SL_2026";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithReferencePoint("Z_D_SL_2026");
         }
 
         private void button41_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_SL_2027";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithoutReferencePoint("Z_D_SL_2027");
         }
 
         private void button42_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_DZ_2028";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithReferencePoint("Z_D_DZ_2028");
         }
 
         private void button43_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_DZ_2029";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_DZ_2029");
         }
 
         private void button44_Click(object sender, EventArgs e)
         {
-            Seam seam = new Seam();
-            seam.Name = "Z_K_PD_2030";
-            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS);
-            ArrayList secondaryParts = new ArrayList();
-
-            foreach (ModelObject modelObject in partsEnumerator){
-                secondaryParts.Add(modelObject);
-            }
-
-            Point startPoint = picker.PickPoint();
-            Point endPoint = picker.PickPoint();
-
-            seam.SetPrimaryObject(mainPart);
-            seam.SetSecondaryObjects(secondaryParts);
-            seam.SetInputPositions(startPoint, endPoint);
-
-            try
-            {
-                seam.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createSeam("Z_K_PD_2030");
         }
 
         private void button45_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_DZ_2031";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_DZ_2031");
         }
 
         private void button46_Click(object sender, EventArgs e)
@@ -1340,68 +792,17 @@ namespace Komponenty_app
 
         private void button47_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_MS_2033";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithReferencePoint("Z_D_MS_2033");
         }
 
         private void button48_Click(object sender, EventArgs e)
         {
-            Detail detail = new Detail();
-            detail.Name = "Z_D_DZ_2034";
-            detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
-
-            try
-            {
-                detail.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createDetailWithReferencePoint("Z_D_DZ_2034");
         }
 
         private void button49_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_DZ_2035";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_DZ_2035");
         }
 
         private void button50_Click(object sender, EventArgs e)
@@ -1441,26 +842,7 @@ namespace Komponenty_app
 
         private void button51_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            connection.Name = "Z_P_DZ_2037";
-            connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObject secondaryPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-
-            connection.SetPrimaryObject(mainPart);
-            connection.SetSecondaryObject(secondaryPart);
-
-            try
-            {
-                connection.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createConnectionOfTwoParts("Z_P_DZ_2037");
         }
     }
 }
