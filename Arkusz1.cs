@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Tekla.Structures.Analysis.Operations;
 using Tekla.Structures.Catalogs;
 using Tekla.Structures.Model;
 using Tekla.Structures.Model.UI;
+using Operation = Tekla.Structures.Model.Operations.Operation;
 using Point = Tekla.Structures.Geometry3d.Point;
 
 namespace Komponenty_app
@@ -125,8 +127,8 @@ namespace Komponenty_app
             connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
             Picker picker = new Picker();
 
-            connection.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            connection.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            connection.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element główny"));
+            connection.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element podrzędny"));
 
             try
             {
@@ -154,7 +156,7 @@ namespace Komponenty_app
             detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
 
             Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element"));
 
             try
             {
@@ -182,8 +184,8 @@ namespace Komponenty_app
             detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
 
             Picker picker = new Picker();
-            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            detail.SetReferencePoint(picker.PickPoint());
+            detail.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element"));
+            detail.SetReferencePoint(picker.PickPoint("Wybierz punkt"));
 
             try
             {
@@ -212,9 +214,9 @@ namespace Komponenty_app
 
             Picker picker = new Picker();
 
-            seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            seam.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
-            seam.SetInputPositions(picker.PickPoint(), picker.PickPoint());
+			seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element główny"));
+			seam.SetSecondaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element podrzędny"));
+            seam.SetInputPositions(picker.PickPoint("Wybierz punkt"), picker.PickPoint("Wybierz punkt"));
 
             try
             {
@@ -243,15 +245,14 @@ namespace Komponenty_app
 
             Picker picker = new Picker();
 
-            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS);
+            seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART, "Wybierz element główny"));
+            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS, "Wybierz elementy podrzędne");
             ArrayList secondaryParts = new ArrayList();
 
             foreach (ModelObject modelObject in partsEnumerator)
             {
                 secondaryParts.Add(modelObject);
             }
-
-            seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
             seam.SetSecondaryObjects(secondaryParts);
             seam.SetInputPositions(picker.PickPoint(), picker.PickPoint());
 
@@ -281,7 +282,7 @@ namespace Komponenty_app
             customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
 
             Picker picker = new Picker();
-            customPart.SetInputPositions(picker.PickPoint(), picker.PickPoint());
+            customPart.SetInputPositions(picker.PickPoint("Wybierz punkt"), picker.PickPoint("Wybierz punkt"));
 
             try
             {
@@ -309,7 +310,7 @@ namespace Komponenty_app
             customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
 
             Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
+            Point startPoint = picker.PickPoint("Wybierz punkt");
             customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
 
             try

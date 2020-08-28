@@ -42,4 +42,3 @@ C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Kompone
 C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CopyComplete
 C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.dll
 C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.pdb
-C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csprojAssemblyReference.cache
