@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Tekla.Structures.Catalogs;
 using Tekla.Structures.Model;
 using Tekla.Structures.Model.UI;
 using Point = Tekla.Structures.Geometry3d.Point;
@@ -10,12 +11,13 @@ namespace Komponenty_app
 {
     public partial class Arkusz1
     {
+        private Model MyModel;
+        readonly string CUSTOM_COMPONENTS_PATH = "P:\\TeklaStructuresModels\\XS_FIRM\\Komponenty\\";
         private void Arkusz1_Startup(object sender, System.EventArgs e)
         {
             MyModel = new Model();
         }
 
-        private Model MyModel;
         private void Arkusz1_Shutdown(object sender, System.EventArgs e)
         {
         }
@@ -86,6 +88,36 @@ namespace Komponenty_app
 
         #endregion
 
+        private bool isExisting(BaseComponent component)
+		{
+            CatalogHandler catalogHandler = new CatalogHandler();
+			if (catalogHandler.GetConnectionStatus())
+			{
+                ComponentItemEnumerator componentItemEnumerator = catalogHandler.GetComponentItems();
+                ComponentItem componentItem;
+				while (componentItemEnumerator.MoveNext())
+				{
+                    componentItem = componentItemEnumerator.Current;
+                    if(component.Name == componentItem.Name)
+					{
+                        return true;
+					}
+				}
+                return false;
+			}
+            MessageBox.Show("Nie można połączyć z modelem");
+            throw new Exception("Nie można połączyć z modelem");
+		}
+
+        private void importCustomComponent(BaseComponent component)
+		{
+            CatalogHandler catalogHandler = new CatalogHandler();
+            if (catalogHandler.ImportCustomComponentItems(CUSTOM_COMPONENTS_PATH + component.Name + ".uel"))
+			{
+                Console.WriteLine("Importowano komponent " + component.Name);
+			}
+		}
+
         private void createConnectionOfTwoParts(string name)
         {
             Connection connection = new Connection();
@@ -98,7 +130,15 @@ namespace Komponenty_app
 
             try
             {
-                connection.Insert();
+				if (isExisting(connection))
+				{
+                    connection.Insert();
+				}
+				else
+				{
+                    importCustomComponent(connection);
+                    connection.Insert();
+				}
             }
             catch (Exception ex)
             {
@@ -118,7 +158,15 @@ namespace Komponenty_app
 
             try
             {
-                detail.Insert();
+                if (isExisting(detail))
+                {
+                    detail.Insert();
+                }
+                else
+                {
+                    importCustomComponent(detail);
+                    detail.Insert();
+                }
             }
             catch (Exception ex)
             {
@@ -139,7 +187,15 @@ namespace Komponenty_app
 
             try
             {
-                detail.Insert();
+				if (isExisting(detail))
+				{
+                    detail.Insert();
+				}
+				else
+				{
+                    importCustomComponent(detail);
+                    detail.Insert();
+				}
             }
             catch (Exception ex)
             {
@@ -162,7 +218,15 @@ namespace Komponenty_app
 
             try
             {
-                seam.Insert();
+				if (isExisting(seam))
+				{
+                    seam.Insert();
+				}
+				else
+				{
+                    importCustomComponent(seam);
+                    seam.Insert();
+				}
             }
             catch (Exception ex)
             {
@@ -193,7 +257,15 @@ namespace Komponenty_app
 
             try
             {
-                seam.Insert();
+				if (isExisting(seam))
+				{
+                    seam.Insert();
+				}
+				else
+				{
+                    importCustomComponent(seam);
+                    seam.Insert();
+				}
             }
             catch (Exception ex)
             {
@@ -213,7 +285,15 @@ namespace Komponenty_app
 
             try
             {
-                customPart.Insert();
+				if (isExisting(customPart))
+				{
+                    customPart.Insert();
+				}
+				else
+				{
+                    importCustomComponent(customPart);
+                    customPart.Insert();
+				}
             }
             catch (Exception ex)
             {
@@ -234,7 +314,15 @@ namespace Komponenty_app
 
             try
             {
-                customPart.Insert();
+				if (isExisting(customPart))
+				{
+                    customPart.Insert();
+				}
+				else
+				{
+                    importCustomComponent(customPart);
+                    customPart.Insert();
+				}
             }
             catch (Exception ex)
             {
