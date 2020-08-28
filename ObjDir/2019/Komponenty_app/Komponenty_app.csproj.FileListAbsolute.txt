@@ -1,0 +1,45 @@
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Komponenty_app.dll
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Komponenty_app.pdb
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Komponenty_app.dll.manifest
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Komponenty_app.vsto
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\KODOWANIE KOMPONENTÓW.xlsx
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\p.makarczuk\source\repos\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csprojAssemblyReference.cache
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Arkusz1.resources
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Properties.Resources.resources
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.GenerateResource.cache
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CoreCompileInputs.cache
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CopyComplete
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.dll
+C:\Users\p.makarczuk\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.pdb
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Komponenty_app.dll
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Komponenty_app.pdb
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Komponenty_app.dll.manifest
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Komponenty_app.vsto
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\KODOWANIE KOMPONENTÓW.xlsx
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+T:\_PRACOWNICY\Paweł M\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csprojAssemblyReference.cache
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Arkusz1.resources
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Properties.Resources.resources
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.GenerateResource.cache
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CoreCompileInputs.cache
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CopyComplete
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.dll
+T:\_PRACOWNICY\Paweł M\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.pdb
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Komponenty_app.dll
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Komponenty_app.pdb
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Komponenty_app.dll.manifest
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Komponenty_app.vsto
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\KODOWANIE KOMPONENTÓW.xlsx
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\p.miekos\source\repos\Komponenty_app\bin\Debug\Microsoft.Office.Tools.Excel.v4.0.Utilities.dll
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Arkusz1.resources
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.Properties.Resources.resources
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.GenerateResource.cache
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CoreCompileInputs.cache
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csproj.CopyComplete
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.dll
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.pdb
+C:\Users\p.miekos\source\repos\Komponenty_app\ObjDir\2019\Komponenty_app\Komponenty_app.csprojAssemblyReference.cache
