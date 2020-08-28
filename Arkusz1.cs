@@ -266,163 +266,22 @@ namespace Komponenty_app
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_P_PG_1004";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_P_PG_1004");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_P_PG_1005";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_P_PG_1005");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_P_PG_1006";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_P_PG_1006");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_P_PG_1007";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_P_PG_1007");
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -454,82 +313,12 @@ namespace Komponenty_app
 
         private void button13_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_E_PZ_1012";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_E_PZ_1012");
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            Component cp1 = new Component();
-            cp1.Name = "S_E_ST_1013";
-            cp1.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker piku = new Picker();
-            Point p1 = new Point();
-            Point p2 = new Point();
-            try
-            {
-                p1 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            try
-            {
-                p2 = piku.PickPoint();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak wskazania, przyjęto punkt 0,0,0", "Error");
-            }
-            ComponentInput ci1 = new ComponentInput();
-            ci1.AddOneInputPosition(p1);
-            ci1.AddOneInputPosition(p2);
-            cp1.SetComponentInput(ci1);
-            if (p1 != p2)
-            {
-                cp1.Insert();
-            }
-            else
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu, punkty są takie same", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("S_E_ST_1013");
         }
 
         private void button15_Click(object sender, EventArgs e)
