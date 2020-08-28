@@ -148,7 +148,7 @@ namespace Komponenty_app
             MyModel.CommitChanges();
         }
 
-        private void createSeam(string name)
+        private void createSeamOfTwoParts(string name)
 		{
             Seam seam = new Seam();
             seam.Name = name;
@@ -170,6 +170,79 @@ namespace Komponenty_app
             }
             MyModel.CommitChanges();
         }
+
+        private void createSeamOfMultipleParts(string name)
+		{
+            Seam seam = new Seam();
+            seam.Name = name;
+            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+
+            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS);
+            ArrayList secondaryParts = new ArrayList();
+
+            foreach (ModelObject modelObject in partsEnumerator)
+            {
+                secondaryParts.Add(modelObject);
+            }
+
+            seam.SetPrimaryObject(picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART));
+            seam.SetSecondaryObjects(secondaryParts);
+            seam.SetInputPositions(picker.PickPoint(), picker.PickPoint());
+
+            try
+            {
+                seam.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
+        private void createElementOfTwoPoints(string name)
+		{
+            CustomPart customPart = new CustomPart();
+            customPart.Name = name;
+            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+            customPart.SetInputPositions(picker.PickPoint(), picker.PickPoint());
+
+            try
+            {
+                customPart.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
+        private void createElementOfOnePoint(string name)
+		{
+            CustomPart customPart = new CustomPart();
+            customPart.Name = name;
+            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+
+            Picker picker = new Picker();
+            Point startPoint = picker.PickPoint();
+            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
+
+            try
+            {
+                customPart.Insert();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+            }
+            MyModel.CommitChanges();
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -476,7 +549,7 @@ namespace Komponenty_app
 
         private void button18_Click(object sender, EventArgs e)
         {
-            createSeam("Z_K_SZ_2000");
+            createSeamOfTwoParts("Z_K_SZ_2000");
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -491,7 +564,7 @@ namespace Komponenty_app
 
         private void button21_Click(object sender, EventArgs e)
         {
-            createSeam("Z_P_SZ_2003");
+            createSeamOfTwoParts("Z_P_SZ_2003");
         }
 
         private void button22_Click(object sender, EventArgs e)
@@ -526,22 +599,7 @@ namespace Komponenty_app
 
         private void button28_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_SL_2012";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            customPart.SetInputPositions(picker.PickPoint(), picker.PickPoint());
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("Z_E_SL_2012");
         }
 
         private void button29_Click(object sender, EventArgs e)
@@ -551,168 +609,42 @@ namespace Komponenty_app
 
         private void button30_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_BSP_2014";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0,0,1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_BSP_2014");
         }
 
         private void button31_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_B_2015";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_B_2015");
         }
 
         private void button32_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_DZ_2016";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_DZ_2016");
         }
 
         private void button33_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_DZ_2017";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_DZ_2017");
         }
 
         private void button34_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_MS_2018";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_MS_2018");
         }
 
         private void button35_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_MS_2005";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            Point startPoint = picker.PickPoint();
-            customPart.SetInputPositions(startPoint, startPoint + new Point(0, 0, 1000));
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfOnePoint("Z_E_MS_2005");
         }
 
         private void button36_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_PD_2022";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            customPart.SetInputPositions(picker.PickPoint(), picker.PickPoint());
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("Z_E_PD_2022");
         }
 
         private void button37_Click(object sender, EventArgs e)
         {
-            CustomPart customPart = new CustomPart();
-            customPart.Name = "Z_E_SL_2023";
-            customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-            customPart.SetInputPositions(picker.PickPoint(), picker.PickPoint());
-
-            try
-            {
-                customPart.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createElementOfTwoPoints("Z_E_SL_2023");
         }
 
         private void button38_Click(object sender, EventArgs e)
@@ -747,7 +679,7 @@ namespace Komponenty_app
 
         private void button44_Click(object sender, EventArgs e)
         {
-            createSeam("Z_K_PD_2030");
+            createSeamOfMultipleParts("Z_K_PD_2030");
         }
 
         private void button45_Click(object sender, EventArgs e)
@@ -757,37 +689,7 @@ namespace Komponenty_app
 
         private void button46_Click(object sender, EventArgs e)
         {
-            Seam seam = new Seam();
-            seam.Name = "Z_K_SZ_2032";
-            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS);
-            ArrayList secondaryParts = new ArrayList();
-
-            foreach (ModelObject modelObject in partsEnumerator)
-            {
-                secondaryParts.Add(modelObject);
-            }
-
-            Point startPoint = picker.PickPoint();
-            Point endPoint = picker.PickPoint();
-
-            seam.SetPrimaryObject(mainPart);
-            seam.SetSecondaryObjects(secondaryParts);
-            seam.SetInputPositions(startPoint, endPoint);
-
-            try
-            {
-                seam.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createSeamOfMultipleParts("Z_K_SZ_2032");
         }
 
         private void button47_Click(object sender, EventArgs e)
@@ -807,37 +709,7 @@ namespace Komponenty_app
 
         private void button50_Click(object sender, EventArgs e)
         {
-            Seam seam = new Seam();
-            seam.Name = "Z_K_SZ_2032";
-            seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
-
-            Picker picker = new Picker();
-
-            ModelObject mainPart = picker.PickObject(Picker.PickObjectEnum.PICK_ONE_PART);
-            ModelObjectEnumerator partsEnumerator = picker.PickObjects(Picker.PickObjectsEnum.PICK_N_OBJECTS);
-            ArrayList secondaryParts = new ArrayList();
-
-            foreach (ModelObject modelObject in partsEnumerator)
-            {
-                secondaryParts.Add(modelObject);
-            }
-
-            Point startPoint = picker.PickPoint();
-            Point endPoint = picker.PickPoint();
-
-            seam.SetPrimaryObject(mainPart);
-            seam.SetSecondaryObjects(secondaryParts);
-            seam.SetInputPositions(startPoint, endPoint);
-
-            try
-            {
-                seam.Insert();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nie udało się wstawić komponentu", "Error");
-            }
-            MyModel.CommitChanges();
+            createSeamOfMultipleParts("Z_K_SZ_2032");
         }
 
         private void button51_Click(object sender, EventArgs e)
