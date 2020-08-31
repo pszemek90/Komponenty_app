@@ -82,6 +82,7 @@ namespace Komponenty_app
 			this.button49.Click += new System.EventHandler(this.button49_Click);
 			this.button50.Click += new System.EventHandler(this.button50_Click);
 			this.button51.Click += new System.EventHandler(this.button51_Click);
+			this.button52.Click += new System.EventHandler(this.button52_Click);
 			this.Startup += new System.EventHandler(this.Arkusz1_Startup);
 			this.Shutdown += new System.EventHandler(this.Arkusz1_Shutdown);
 
@@ -119,11 +120,11 @@ namespace Komponenty_app
 			}
 		}
 
-		private void createConnectionOfTwoParts(string name)
+		private void createConnectionOfTwoParts(string name, int number)
 		{
 			Connection connection = new Connection();
 			connection.Name = name;
-			connection.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			connection.Number = number;
 			Picker picker = new Picker();
 
 			try
@@ -137,31 +138,37 @@ namespace Komponenty_app
 				return;
 			}
 
-
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(connection))
-				{
-					connection.Insert();
-				}
-				else
-				{
-					importCustomComponent(connection);
-					connection.Insert();
-				}
+				connection.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(connection))
+					{
+						connection.Insert();
+					}
+					else
+					{
+						importCustomComponent(connection);
+						connection.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createDetailWithoutReferencePoint(string name)
+		private void createDetailWithoutReferencePoint(string name, int number)
 		{
 			Detail detail = new Detail();
 			detail.Name = name;
-			detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			detail.Number = number;
 
 			Picker picker = new Picker();
 			try
@@ -174,30 +181,40 @@ namespace Komponenty_app
 				return;
 			}
 
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(detail))
-				{
-					detail.Insert();
-				}
-				else
-				{
-					importCustomComponent(detail);
-					detail.Insert();
-				}
+				detail.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(detail))
+					{
+						detail.Insert();
+					}
+					else
+					{
+						importCustomComponent(detail);
+						detail.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
+
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createDetailWithReferencePoint(string name)
+		private void createDetailWithReferencePoint(string name, int number)
 		{
 			Detail detail = new Detail();
 			detail.Name = name;
-			detail.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			detail.Number = number;
+			detail.LoadAttributesFromFile("standard");//TODO: załadować standard do komponentu żeber
+
 
 			Picker picker = new Picker();
 			try
@@ -211,30 +228,37 @@ namespace Komponenty_app
 				return;
 			}
 
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(detail))
-				{
-					detail.Insert();
-				}
-				else
-				{
-					importCustomComponent(detail);
-					detail.Insert();
-				}
+				detail.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(detail))
+					{
+						detail.Insert();
+					}
+					else
+					{
+						importCustomComponent(detail);
+						detail.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createSeamOfTwoParts(string name)
+		private void createSeamOfTwoParts(string name, int number)
 		{
 			Seam seam = new Seam();
 			seam.Name = name;
-			seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			seam.Number = number;
 
 			Picker picker = new Picker();
 
@@ -249,31 +273,37 @@ namespace Komponenty_app
 				Operation.DisplayPrompt("Przerwano operację");
 				return;
 			}
-
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(seam))
-				{
-					seam.Insert();
-				}
-				else
-				{
-					importCustomComponent(seam);
-					seam.Insert();
-				}
+				seam.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(seam))
+					{
+						seam.Insert();
+					}
+					else
+					{
+						importCustomComponent(seam);
+						seam.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createSeamOfMultipleParts(string name)
+		private void createSeamOfMultipleParts(string name, int number)
 		{
 			Seam seam = new Seam();
 			seam.Name = name;
-			seam.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			seam.Number = number;
 
 			Picker picker = new Picker();
 
@@ -295,31 +325,37 @@ namespace Komponenty_app
 				Operation.DisplayPrompt("Przerwano operację");
 				return;
 			}
-
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(seam))
-				{
-					seam.Insert();
-				}
-				else
-				{
-					importCustomComponent(seam);
-					seam.Insert();
-				}
+				seam.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(seam))
+					{
+						seam.Insert();
+					}
+					else
+					{
+						importCustomComponent(seam);
+						seam.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createElementOfTwoPoints(string name)
+		private void createElementOfTwoPoints(string name, int number)
 		{
 			CustomPart customPart = new CustomPart();
 			customPart.Name = name;
-			customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			customPart.Number = number;
 
 			Picker picker = new Picker();
 
@@ -332,31 +368,37 @@ namespace Komponenty_app
 				Operation.DisplayPrompt("Przerwano operację");
 				return;
 			}
-
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(customPart))
-				{
-					customPart.Insert();
-				}
-				else
-				{
-					importCustomComponent(customPart);
-					customPart.Insert();
-				}
+				customPart.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(customPart))
+					{
+						customPart.Insert();
+					}
+					else
+					{
+						importCustomComponent(customPart);
+						customPart.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
 
-		private void createElementOfOnePoint(string name)
+		private void createElementOfOnePoint(string name, int number)
 		{
 			CustomPart customPart = new CustomPart();
 			customPart.Name = name;
-			customPart.Number = BaseComponent.CUSTOM_OBJECT_NUMBER;
+			customPart.Number = number;
 
 			Picker picker = new Picker();
 			try
@@ -369,22 +411,28 @@ namespace Komponenty_app
 				Operation.DisplayPrompt("Przerwano operację");
 				return;
 			}
-
-			try
+			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
-				if (isExisting(customPart))
-				{
-					customPart.Insert();
-				}
-				else
-				{
-					importCustomComponent(customPart);
-					customPart.Insert();
-				}
+				customPart.Insert();
 			}
-			catch (Exception ex)
+			else
 			{
-				MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				try
+				{
+					if (isExisting(customPart))
+					{
+						customPart.Insert();
+					}
+					else
+					{
+						importCustomComponent(customPart);
+						customPart.Insert();
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Nie udało się wstawić komponentu", "Error");
+				}
 			}
 			MyModel.CommitChanges();
 		}
@@ -392,42 +440,42 @@ namespace Komponenty_app
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_T_1000");
+			createConnectionOfTwoParts("S_P_T_1000", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_BS_1001");
+			createConnectionOfTwoParts("S_P_BS_1001", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button3_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_BS_1002");
+			createConnectionOfTwoParts("S_P_BS_1002", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_X_1003");
+			createConnectionOfTwoParts("S_P_X_1003", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_P_PG_1004");
+			createElementOfTwoPoints("S_P_PG_1004", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button6_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_P_PG_1005");
+			createElementOfTwoPoints("S_P_PG_1005", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button7_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_P_PG_1006");
+			createElementOfTwoPoints("S_P_PG_1006", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button8_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_P_PG_1007");
+			createElementOfTwoPoints("S_P_PG_1007", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button9_Click(object sender, EventArgs e)
@@ -449,207 +497,212 @@ namespace Komponenty_app
 
 		private void button11_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_RR_1010");
+			createConnectionOfTwoParts("S_P_RR_1010", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button12_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_SR_1011");
+			createConnectionOfTwoParts("S_P_SR_1011", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button13_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_E_PZ_1012");
+			createElementOfTwoPoints("S_E_PZ_1012", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button14_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("S_E_ST_1013");
+			createElementOfTwoPoints("S_E_ST_1013", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button15_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_BP_1014");
+			createConnectionOfTwoParts("S_P_BP_1014", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button16_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("S_P_ST_1015");
+			createConnectionOfTwoParts("S_P_ST_1015", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button17_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("S_E_SP_1016");
+			createDetailWithoutReferencePoint("S_E_SP_1016", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button18_Click(object sender, EventArgs e)
 		{
-			createSeamOfTwoParts("Z_K_SZ_2000");
+			createSeamOfTwoParts("Z_K_SZ_2000", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button19_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_PDl_2001");
+			createConnectionOfTwoParts("Z_P_PDl_2001", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button20_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_PDp_2002 ");
+			createConnectionOfTwoParts("Z_P_PDp_2002 ", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button21_Click(object sender, EventArgs e)
 		{
-			createSeamOfTwoParts("Z_P_SZ_2003");
+			createSeamOfTwoParts("Z_P_SZ_2003", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button22_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_D_MSO_2004");
+			createDetailWithoutReferencePoint("Z_D_MSO_2004", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button23_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_E_SL_2007");
+			createDetailWithoutReferencePoint("Z_E_SL_2007", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button24_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_E_SL_2008");
+			createDetailWithoutReferencePoint("Z_E_SL_2008", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button25_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_E_SL_2009");
+			createDetailWithoutReferencePoint("Z_E_SL_2009", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button26_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_E_SL_2010");
+			createDetailWithoutReferencePoint("Z_E_SL_2010", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button27_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_E_SL_2011");
+			createDetailWithoutReferencePoint("Z_E_SL_2011", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button28_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("Z_E_SL_2012");
+			createElementOfTwoPoints("Z_E_SL_2012", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button29_Click(object sender, EventArgs e)
 		{
-			createDetailWithReferencePoint("Z_E_SL_2013");
+			createDetailWithReferencePoint("Z_E_SL_2013", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button30_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_BSP_2014");
+			createElementOfOnePoint("Z_E_BSP_2014", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button31_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_B_2015");
+			createElementOfOnePoint("Z_E_B_2015", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button32_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_DZ_2016");
+			createElementOfOnePoint("Z_E_DZ_2016", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button33_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_DZ_2017");
+			createElementOfOnePoint("Z_E_DZ_2017", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button34_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_MS_2018");
+			createElementOfOnePoint("Z_E_MS_2018", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button35_Click(object sender, EventArgs e)
 		{
-			createElementOfOnePoint("Z_E_MS_2005");
+			createElementOfOnePoint("Z_E_MS_2005", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button36_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("Z_E_PD_2022");
+			createElementOfTwoPoints("Z_E_PD_2022", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button37_Click(object sender, EventArgs e)
 		{
-			createElementOfTwoPoints("Z_E_SL_2023");
+			createElementOfTwoPoints("Z_E_SL_2023", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button38_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_PDl_2024");
+			createConnectionOfTwoParts("Z_P_PDl_2024", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button39_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_PDp_2025");
+			createConnectionOfTwoParts("Z_P_PDp_2025", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button40_Click(object sender, EventArgs e)
 		{
-			createDetailWithReferencePoint("Z_D_SL_2026");
+			createDetailWithReferencePoint("Z_D_SL_2026", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button41_Click(object sender, EventArgs e)
 		{
-			createDetailWithoutReferencePoint("Z_D_SL_2027");
+			createDetailWithoutReferencePoint("Z_D_SL_2027", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button42_Click(object sender, EventArgs e)
 		{
-			createDetailWithReferencePoint("Z_D_DZ_2028");
+			createDetailWithReferencePoint("Z_D_DZ_2028", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button43_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_DZ_2029");
+			createConnectionOfTwoParts("Z_P_DZ_2029", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button44_Click(object sender, EventArgs e)
 		{
-			createSeamOfMultipleParts("Z_K_PD_2030");
+			createSeamOfMultipleParts("Z_K_PD_2030", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button45_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_DZ_2031");
+			createConnectionOfTwoParts("Z_P_DZ_2031", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button46_Click(object sender, EventArgs e)
 		{
-			createSeamOfMultipleParts("Z_K_SZ_2032");
+			createSeamOfMultipleParts("Z_K_SZ_2032", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button47_Click(object sender, EventArgs e)
 		{
-			createDetailWithReferencePoint("Z_D_MS_2033");
+			createDetailWithReferencePoint("Z_D_MS_2033", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button48_Click(object sender, EventArgs e)
 		{
-			createDetailWithReferencePoint("Z_D_DZ_2034");
+			createDetailWithReferencePoint("Z_D_DZ_2034", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button49_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_DZ_2035");
+			createConnectionOfTwoParts("Z_P_DZ_2035", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button50_Click(object sender, EventArgs e)
 		{
-			createSeamOfMultipleParts("Z_K_SZ_2032");
+			createSeamOfMultipleParts("Z_K_SZ_2032", BaseComponent.CUSTOM_OBJECT_NUMBER);
 		}
 
 		private void button51_Click(object sender, EventArgs e)
 		{
-			createConnectionOfTwoParts("Z_P_DZ_2037");
+			createConnectionOfTwoParts("Z_P_DZ_2037", BaseComponent.CUSTOM_OBJECT_NUMBER);
+		}
+
+		private void button52_Click(object sender, EventArgs e)
+		{
+			createDetailWithReferencePoint("Żebra", 1003);
 		}
 	}
 }
