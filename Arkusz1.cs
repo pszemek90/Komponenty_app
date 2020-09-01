@@ -83,6 +83,7 @@ namespace Komponenty_app
 			this.button50.Click += new System.EventHandler(this.button50_Click);
 			this.button51.Click += new System.EventHandler(this.button51_Click);
 			this.button52.Click += new System.EventHandler(this.button52_Click);
+			this.button53.Click += new System.EventHandler(this.button53_Click);
 			this.Startup += new System.EventHandler(this.Arkusz1_Startup);
 			this.Shutdown += new System.EventHandler(this.Arkusz1_Shutdown);
 
@@ -213,7 +214,6 @@ namespace Komponenty_app
 			Detail detail = new Detail();
 			detail.Name = name;
 			detail.Number = number;
-			detail.LoadAttributesFromFile("standard");//TODO: załadować standard do komponentu żeber
 
 
 			Picker picker = new Picker();
@@ -703,6 +703,11 @@ namespace Komponenty_app
 		private void button52_Click(object sender, EventArgs e)
 		{
 			createDetailWithReferencePoint("Żebra", 1003);
+		}
+
+		private void button53_Click(object sender, EventArgs e)
+		{
+			createDetailWithReferencePoint("Detal blachy końcowej", 1002);
 		}
 	}
 }
