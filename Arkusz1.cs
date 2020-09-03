@@ -214,7 +214,7 @@ namespace Komponenty_app
 			Detail detail = new Detail();
 			detail.Name = name;
 			detail.Number = number;
-
+			Tekla.Structures.ModelInternal.Operation.dotStartCommand("ail_display_connection_dialog", number.ToString());
 
 			Picker picker = new Picker();
 			try
@@ -230,6 +230,7 @@ namespace Komponenty_app
 
 			if (number != BaseComponent.CUSTOM_OBJECT_NUMBER)
 			{
+				detail.Class = 99;
 				detail.Insert();
 			}
 			else
