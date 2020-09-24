@@ -126,6 +126,8 @@ namespace Komponenty_app {
         
         internal Microsoft.Office.Tools.Excel.Controls.Button button53;
         
+        internal Microsoft.Office.Tools.Excel.Controls.Button button54;
+        
         /// 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -288,6 +290,7 @@ namespace Komponenty_app {
             this.button51 = new Microsoft.Office.Tools.Excel.Controls.Button(Globals.Factory, this.ItemProvider, this.HostContext, "9BD201EEA9B525944E29A4D39058D171DA4959", "9BD201EEA9B525944E29A4D39058D171DA4959", this, "button51");
             this.button52 = new Microsoft.Office.Tools.Excel.Controls.Button(Globals.Factory, this.ItemProvider, this.HostContext, "1FEE8F3B717F5814D1E1A3DC14C4D1EF56C0B1", "1FEE8F3B717F5814D1E1A3DC14C4D1EF56C0B1", this, "button52");
             this.button53 = new Microsoft.Office.Tools.Excel.Controls.Button(Globals.Factory, this.ItemProvider, this.HostContext, "16973A07E1BDA9149BF1A8FD180B59F6EC6021", "16973A07E1BDA9149BF1A8FD180B59F6EC6021", this, "button53");
+            this.button54 = new Microsoft.Office.Tools.Excel.Controls.Button(Globals.Factory, this.ItemProvider, this.HostContext, "1A5F0A1171748014251181F6113F072B0C1D31", "1A5F0A1171748014251181F6113F072B0C1D31", this, "button54");
         }
         
         /// 
@@ -720,6 +723,14 @@ namespace Komponenty_app {
             this.button53.Text = "Włącz";
             this.button53.UseVisualStyleBackColor = false;
             // 
+            // button54
+            // 
+            this.button54.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button54.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.button54.Name = "button54";
+            this.button54.Text = "Włącz";
+            this.button54.UseVisualStyleBackColor = false;
+            // 
             // Arkusz1
             // 
             this.button1.BindingContext = this.BindingContext;
@@ -775,6 +786,7 @@ namespace Komponenty_app {
             this.button51.BindingContext = this.BindingContext;
             this.button52.BindingContext = this.BindingContext;
             this.button53.BindingContext = this.BindingContext;
+            this.button54.BindingContext = this.BindingContext;
         }
         
         /// 

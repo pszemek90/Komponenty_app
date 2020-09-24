@@ -84,6 +84,7 @@ namespace Komponenty_app
 			this.button51.Click += new System.EventHandler(this.button51_Click);
 			this.button52.Click += new System.EventHandler(this.button52_Click);
 			this.button53.Click += new System.EventHandler(this.button53_Click);
+			this.button54.Click += new System.EventHandler(this.button54_Click);
 			this.Startup += new System.EventHandler(this.Arkusz1_Startup);
 			this.Shutdown += new System.EventHandler(this.Arkusz1_Shutdown);
 
@@ -709,6 +710,14 @@ namespace Komponenty_app
 		private void button53_Click(object sender, EventArgs e)
 		{
 			createDetailWithReferencePoint("Detal blachy końcowej", 1002);
+		}
+
+		private void button54_Click(object sender, EventArgs e)
+		{
+			Process ExternalProcess = new Process();
+			ExternalProcess.StartInfo.FileName = @"P:\TeklaStructuresModels\XS_FIRM\Komponenty\Auto_Sruby_App.exe";
+			ExternalProcess.Start();
+			ExternalProcess.WaitForExit();
 		}
 	}
 }
