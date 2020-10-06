@@ -486,7 +486,6 @@ namespace Komponenty_app
 			Process ExternalProcess = new Process();
 			ExternalProcess.StartInfo.FileName = @"P:\TeklaStructuresModels\XS_FIRM\Komponenty\S_P_ST_1008.exe";
 			ExternalProcess.Start();
-			ExternalProcess.WaitForExit();
 		}
 
 		private void button10_Click(object sender, EventArgs e)
@@ -494,7 +493,6 @@ namespace Komponenty_app
 			Process ExternalProcess = new Process();
 			ExternalProcess.StartInfo.FileName = @"P:\TeklaStructuresModels\XS_FIRM\Komponenty\S_P_ST_1009.exe";
 			ExternalProcess.Start();
-			ExternalProcess.WaitForExit();
 		}
 
 		private void button11_Click(object sender, EventArgs e)
@@ -717,7 +715,6 @@ namespace Komponenty_app
 			Process ExternalProcess = new Process();
 			ExternalProcess.StartInfo.FileName = @"P:\TeklaStructuresModels\XS_FIRM\Komponenty\Auto_Sruby_App.exe";
 			ExternalProcess.Start();
-			ExternalProcess.WaitForExit();
 		}
 	}
 }
